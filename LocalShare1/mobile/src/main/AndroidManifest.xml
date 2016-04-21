@@ -22,7 +22,7 @@
         <activity android:name=".myitems"
             android:screenOrientation="portrait">
 
-        <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -40,7 +40,7 @@
         <activity android:name=".approvedeny"
             android:screenOrientation="portrait">
 
-        <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -49,7 +49,7 @@
         <activity android:name=".myaccount"
             android:screenOrientation="portrait">
 
-        <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -58,7 +58,7 @@
         <activity android:name=".availableitems"
             android:screenOrientation="portrait">
 
-        <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -68,7 +68,7 @@
         <activity android:name=".selecteditem"
             android:screenOrientation="portrait">
 
-        <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -78,7 +78,17 @@
         <activity android:name=".rentalterms"
             android:screenOrientation="portrait">
 
-        <intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+        <activity android:name=".rentercontact"
+            android:screenOrientation="portrait">
+
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -88,7 +98,7 @@
         <activity android:name=".rentitem"
             android:screenOrientation="portrait">
 
-        <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -108,7 +118,7 @@
         <activity android:name=".approvedrequest"
             android:screenOrientation="portrait">
 
-        <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />

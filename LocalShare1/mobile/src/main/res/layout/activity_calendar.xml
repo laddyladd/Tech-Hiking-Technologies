@@ -21,8 +21,8 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="b"
-                android:id="@+id/button6"
+                android:text="back"
+                android:id="@+id/b"
                 android:layout_gravity="center_horizontal" />
 
             <TextView

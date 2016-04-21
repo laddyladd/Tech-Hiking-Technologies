@@ -1,6 +1,5 @@
 package com.example.adam.localshare1;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -26,7 +25,7 @@ public class calendar extends AppCompatActivity implements View.OnClickListener,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
         listView = (ListView)findViewById(R.id.listView);
-        b = (Button)findViewById(R.id.buttonb);
+        b = (Button)findViewById(R.id.b);
         b.setOnClickListener(this);
         List<String> your_array_list = new ArrayList<String>();
         your_array_list.add("May 10, 2016");
