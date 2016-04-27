@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -18,8 +19,12 @@ import java.util.List;
 public class availableitems extends AppCompatActivity implements View.OnClickListener, ListView.OnItemClickListener {
 
     ListView listView;
+    ArrayList<String> original;
+    ArrayList<String> temp;
     Button b;
-
+    Button s;
+    EditText editText;
+    ArrayAdapter<String> arrayAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,23 +32,49 @@ public class availableitems extends AppCompatActivity implements View.OnClickLis
         listView = (ListView) findViewById(R.id.listView);
         b = (Button) findViewById(R.id.buttonb);
         b.setOnClickListener(this);
-        List<String> your_array_list = new ArrayList<String>();
-        your_array_list.add("Canoe: Distance 10 miles");
-        your_array_list.add("bike: Distance 1 mile");
-        your_array_list.add("graduation gown: Distance 3 miles");
+        b.setTag(1);
+        original = new ArrayList<String>();
+        original.add("Canoe: Distance 10 miles");
+        original.add("bike: Distance 1 mile");
+        original.add("graduation gown: Distance 3 miles");
+        temp = original;
 
-
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
-                your_array_list);
+         arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
+                original);
 
         listView.setAdapter(arrayAdapter);
         listView.setOnItemClickListener(this);
+        editText = (EditText)findViewById(R.id.search);
+        s = (Button)findViewById(R.id.button);
+        s.setOnClickListener(this);
+        s.setTag(2);
 
     }
 
     @Override
     public void onClick(View view) {
-        finish();
+        if (view.getTag() == 1)
+            finish();
+        else
+        {
+            String check = editText.getText().toString().toLowerCase();
+            original.clear();
+            for (int i = 0; i < temp.size(); i++)
+            {
+                if (check.equals("")) //if blank reset all data
+                {
+                    original.add(temp.get(i));
+
+                }
+                else if (check.equals(temp.get(i).toLowerCase()))
+                {
+                    original.add(temp.get(i));
+                }
+            }
+
+            arrayAdapter.notifyDataSetChanged();
+
+        }
     }
 
     @Override
