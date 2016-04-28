@@ -27,7 +27,7 @@ public class calendar extends AppCompatActivity implements View.OnClickListener,
         listView = (ListView)findViewById(R.id.listView);
         b = (Button)findViewById(R.id.b);
         b.setOnClickListener(this);
-        List<String> your_array_list = new ArrayList<String>();
+       /** List<String> your_array_list = new ArrayList<String>();
         your_array_list.add("May 10, 2016");
         your_array_list.add("May 12, 2016");
         your_array_list.add("May 13, 2016");
@@ -40,7 +40,7 @@ public class calendar extends AppCompatActivity implements View.OnClickListener,
 
         listView.setAdapter(arrayAdapter);
         listView.setOnItemClickListener(this);
-
+        */
     }
 
     @Override

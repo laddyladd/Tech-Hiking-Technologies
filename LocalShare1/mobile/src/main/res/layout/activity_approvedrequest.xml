@@ -59,44 +59,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="79dp"
-            android:id="@+id/editText4"
-            android:layout_weight="1"
-            android:text="Credit Card Number"
-            android:layout_gravity="center_horizontal"
-            android:textSize="20dp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.17">
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/editText5"
-            android:layout_weight="1"
-            android:text="EXP"
-            android:textSize="20dp" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/editText6"
-            android:layout_weight="1"
-            android:text="CCV"
-            android:textSize="20dp" />
     </LinearLayout>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="PAY"
-        android:id="@+id/p"
+        android:text="Rent"
+        android:id="@+id/r"
         android:layout_weight="0.37"
         android:textSize="30dp" />
 

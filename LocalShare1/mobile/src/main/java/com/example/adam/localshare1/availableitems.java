@@ -37,7 +37,7 @@ public class availableitems extends AppCompatActivity implements View.OnClickLis
         original.add("Canoe: Distance 10 miles");
         original.add("bike: Distance 1 mile");
         original.add("graduation gown: Distance 3 miles");
-        temp = original;
+        temp = new ArrayList<String>(original);
 
          arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
                 original);
@@ -53,8 +53,11 @@ public class availableitems extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View view) {
-        if (view.getTag() == 1)
-            finish();
+        if (view.getTag() == 1) {
+            Intent j = new Intent(this, menu.class);
+            startActivityForResult(j, 1);
+
+        }
         else
         {
             String check = editText.getText().toString().toLowerCase();
@@ -66,11 +69,14 @@ public class availableitems extends AppCompatActivity implements View.OnClickLis
                     original.add(temp.get(i));
 
                 }
-                else if (check.equals(temp.get(i).toLowerCase()))
+                else
                 {
-                    original.add(temp.get(i));
+                    String x[] = temp.get(i).split(":");
+                    if (check.equals(x[0]))
+                        original.add(temp.get(i));
                 }
             }
+
 
             arrayAdapter.notifyDataSetChanged();
 

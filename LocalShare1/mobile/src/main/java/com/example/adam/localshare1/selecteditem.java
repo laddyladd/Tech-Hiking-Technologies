@@ -12,7 +12,6 @@ import android.widget.Button;
 public class selecteditem  extends AppCompatActivity implements View.OnClickListener {
     Button bb;
     Button bv;
-    Button bc;
     Button br;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,15 +19,12 @@ public class selecteditem  extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_selecteditem);
         bb = (Button)findViewById(R.id.bb);
         bv = (Button)findViewById(R.id.bv);
-        bc = (Button)findViewById(R.id.bc);
         br = (Button)findViewById(R.id.br);
         bb.setOnClickListener(this);
         bv.setOnClickListener(this);
-        bc.setOnClickListener(this);
         br.setOnClickListener(this);
         bb.setTag(1);
         bv.setTag(2);
-        bc.setTag(3);
         br.setTag(4);
     }
     @Override
@@ -44,11 +40,6 @@ public class selecteditem  extends AppCompatActivity implements View.OnClickList
             Intent j = new Intent(this, rentalterms.class);
             startActivityForResult(j, 1);
             //view rental terms
-        }
-        else if (i == 3) {
-            Intent j = new Intent(this, calendar.class);
-            startActivityForResult(j, 1);
-            //view calendar
         }
         else if (i == 4)
         {

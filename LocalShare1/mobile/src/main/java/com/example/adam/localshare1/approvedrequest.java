@@ -18,7 +18,7 @@ public class approvedrequest extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_approvedrequest);
         b = (Button)findViewById(R.id.b);
-        p = (Button)findViewById(R.id.p);
+        p = (Button)findViewById(R.id.r);
         b.setOnClickListener(this);
         p.setOnClickListener(this);
         b.setTag(1);
