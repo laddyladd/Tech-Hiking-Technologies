@@ -20,6 +20,7 @@ public class pendingrequests extends AppCompatActivity implements View.OnClickLi
 
 
     ListView listView;
+    ArrayList<Item> items;
     String s;
     Button b;
     @Override
@@ -30,11 +31,24 @@ public class pendingrequests extends AppCompatActivity implements View.OnClickLi
         b = (Button)findViewById(R.id.b);
         b.setOnClickListener(this);
         List<String> your_array_list = new ArrayList<String>();
-        your_array_list.add("Canoe:Approved!");
-        your_array_list.add("bike:Denied");
-        your_array_list.add("graduation gown:Pending");
+        items = new ArrayList<>();
 
 
+        //Kalli your stuff with database goes first into items arraylist and then i will sometimes send data for new
+        //requests that i will add to the list and need to push to database as well
+        try {
+            items.add(new Item(1,getIntent().getStringExtra("Description"), null, getIntent().getStringExtra("Price")
+                    ,getIntent().getStringExtra("Name"), getIntent().getStringExtra("Delivery"), getIntent().getStringExtra("Damage"),
+                    getIntent().getStringExtra("Late"), "Pending"));
+        }
+        catch (Exception e)
+        {
+            //pass being lazy
+        }
+        for (int i = 0; i < items.size(); i++)
+        {
+            your_array_list.add(items.get(i).getName() + ":" + items.get(i).getStatus());
+        }
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
                 your_array_list );

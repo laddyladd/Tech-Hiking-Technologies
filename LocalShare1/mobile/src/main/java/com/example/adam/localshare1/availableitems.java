@@ -19,8 +19,10 @@ import java.util.List;
 public class availableitems extends AppCompatActivity implements View.OnClickListener, ListView.OnItemClickListener {
 
     ListView listView;
-    ArrayList<String> original;
-    ArrayList<String> temp;
+    ArrayList<Item> original;
+    ArrayList<String> oString;
+    ArrayList<Item> temp;
+    ArrayList<String> tString;
     Button b;
     Button s;
     EditText editText;
@@ -33,14 +35,21 @@ public class availableitems extends AppCompatActivity implements View.OnClickLis
         b = (Button) findViewById(R.id.buttonb);
         b.setOnClickListener(this);
         b.setTag(1);
-        original = new ArrayList<String>();
-        original.add("Canoe: Distance 10 miles");
-        original.add("bike: Distance 1 mile");
-        original.add("graduation gown: Distance 3 miles");
-        temp = new ArrayList<String>(original);
-
+        original = new ArrayList<Item>();
+        oString = new ArrayList<String>();
+        tString = new ArrayList<String>();
+        //1 is image ignore that null is location we need latitude/longitude and a location checker class for distance
+        original.add(new Item(1, "A canoe for fishing.", null, "$25", "Canoe", "No", "None", "$30 per day", ""));
+        original.add(new Item(1, "A bike for biking.", null, "$15", "Bike", "Yes", "Max $50", "$10 per day", ""));
+        original.add(new Item(1, "A gown for graduating.", null, "$10", "Graduation Gown","Yes", "$30 if stained. $50 if ripped", "None",""));
+        temp = new ArrayList<Item>(original);
+        for (int i = 0; i < original.size(); i++)
+        {
+            oString.add(original.get(i).getName() + ": " + original.get(i).getPrice());
+            tString.add(original.get(i).getName() + ": " + original.get(i).getPrice());
+        }
          arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
-                original);
+                oString);
 
         listView.setAdapter(arrayAdapter);
         listView.setOnItemClickListener(this);
@@ -62,22 +71,16 @@ public class availableitems extends AppCompatActivity implements View.OnClickLis
         {
             String check = editText.getText().toString().toLowerCase();
             original.clear();
-            for (int i = 0; i < temp.size(); i++)
-            {
-                if (check.equals("")) //if blank reset all data
-                {
+            oString.clear();
+            for (int i = 0; i < temp.size(); i++) {
+                if (check.equals("")) {//if blank reset all data
                     original.add(temp.get(i));
-
-                }
-                else
-                {
-                    String x[] = temp.get(i).split(":");
-                    if (check.equals(x[0]))
-                        original.add(temp.get(i));
+                    oString.add(original.get(i).getName() + ": " + original.get(i).getPrice());
+                } else if (check.equals(temp.get(i).getName().toLowerCase())) {
+                    original.add(temp.get(i));
+                    oString.add(temp.get(i).getName() + ": " + temp.get(i).getPrice());
                 }
             }
-
-
             arrayAdapter.notifyDataSetChanged();
 
         }
@@ -85,10 +88,25 @@ public class availableitems extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onItemClick(AdapterView<?> av, View v, int i, long l) {
-        String s = (String) (listView.getItemAtPosition(i));
-        String[] a = s.split(":");
+
         Intent j = new Intent(this, selecteditem.class);
-        j.putExtra("item", a[0]);
+        if (original.size() < temp.size())
+        {
+            j.putExtra("Name", original.get(i).getName());
+            j.putExtra("Price", original.get(i).getPrice());
+            j.putExtra("Description", original.get(i).getDescription());
+            j.putExtra("Deliver", original.get(i).getDeilvery());
+            j.putExtra("Damage", original.get(i).getDamage());
+            j.putExtra("Late", original.get(i).getLate());
+        }
+        else{
+        j.putExtra("Name", temp.get(i).getName());
+        j.putExtra("Price", temp.get(i).getPrice());
+        j.putExtra("Description", temp.get(i).getDescription());
+        j.putExtra("Deliver", temp.get(i).getDeilvery());
+        j.putExtra("Damage", temp.get(i).getDamage());
+        j.putExtra("Late", temp.get(i).getLate());
+        }
         startActivityForResult(j, 1);
 
 

@@ -38,8 +38,15 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal">
 
+        <TextView
+            android:layout_width="179dp"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Description: "
+            android:id="@+id/textView19" />
+
         <ImageView
-            android:layout_width="166dp"
+            android:layout_width="20dp"
             android:layout_height="166dp"
             android:id="@+id/imageView" />
 
