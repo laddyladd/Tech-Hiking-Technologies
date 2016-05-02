@@ -83,31 +83,6 @@ public class CommHandler implements DataApi.DataListener,
 
     }
 
-    public void sendItemList(ArrayList<Item> items){
-        ArrayList<DataMap> dataMaps = new ArrayList<DataMap>();
-        for (Item item : items){
-            DataMap dataMap = new DataMap();
-            dataMap.putInt("image", item.getImage());
-            dataMap.putString("description", item.getDescription());
-            //Location
-            if (item.getLocation() != null) {
-                dataMap.putDouble("latitude", item.getLocation().getLatitude());
-                dataMap.putDouble("longitude", item.getLocation().getLongitude());
-            }
-            dataMap.putString("price", item.getPrice());
-            dataMap.putString("name", item.getName());
-            dataMap.putString("delivery", item.getDelivery());
-            dataMap.putString("damage", item.getDamage());
-            dataMap.putString("lateFee", item.getLate());
-            dataMap.putString("status", item.getStatus());
 
-            dataMaps.add(dataMap);
-        }
-        PutDataMapRequest putDataMapReq = PutDataMapRequest.create("/" + ITEM_LIST);
-        putDataMapReq.getDataMap().putDataMapArrayList(ITEM_LIST, dataMaps);
-        PutDataRequest putDataReq = putDataMapReq.asPutDataRequest();
-        PendingResult<DataApi.DataItemResult> pendingResult =
-                Wearable.DataApi.putDataItem(mGoogleApiClient, putDataReq);
-    }
 
 }

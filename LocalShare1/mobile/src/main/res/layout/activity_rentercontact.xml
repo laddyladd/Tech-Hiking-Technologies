@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00d4ff"
+    android:background="#a6dd70"
     android:weightSum="1">
 
     <LinearLayout
@@ -28,7 +28,8 @@
             android:text="Renter Contact Info"
             android:id="@+id/textView11"
             android:textIsSelectable="false"
-            android:textSize="30dp" />
+            android:textSize="30dp"
+            android:textStyle="bold"/>
     </LinearLayout>
 
     <TextView
@@ -37,6 +38,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Phone:"
         android:id="@+id/textView12"
+        android:textSize="25dp"
         android:layout_gravity="center_horizontal"
         android:layout_weight="0.16" />
 
@@ -45,6 +47,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Email:"
+        android:textSize="25dp"
         android:id="@+id/textView13"
         android:layout_weight="0.16" />
 
@@ -53,6 +56,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Pickup Address:"
+        android:textSize="25dp"
         android:id="@+id/textView14"
         android:layout_weight="0.16" />
 </LinearLayout>

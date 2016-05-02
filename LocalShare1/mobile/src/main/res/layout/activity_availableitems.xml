@@ -1,62 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00d4ff">
+    android:background="#a6dd70"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:weightSum="1">
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:paddingEnd="30dp"
-            android:layout_weight="1.04">
+            android:layout_weight="1.04"
+            android:orientation="horizontal"
+            android:paddingEnd="30dp">
 
             <Button
+                android:id="@+id/buttonb"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Menu"
-                android:id="@+id/buttonb"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center_horizontal"
+                android:text="Menu" />
 
             <TextView
+                android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_gravity="center"
                 android:gravity="center"
-                android:layout_gravity="center"                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Available Items"
-                android:id="@+id/textView2" />
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
         </LinearLayout>
 
         <ListView
+            android:id="@+id/listView"
             android:layout_width="match_parent"
             android:layout_height="357dp"
-            android:id="@+id/listView"
-            android:scrollbars="vertical"/>
+            android:scrollbars="vertical" />
 
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.04">
+            android:layout_weight="0.04"
+            android:orientation="horizontal">
 
             <EditText
+                android:id="@+id/search"
                 android:layout_width="290dp"
                 android:layout_height="73dp"
-                android:id="@+id/search" />
+                android:maxLines="1" />
 
             <Button
+                android:id="@+id/button"
                 android:layout_width="match_parent"
                 android:layout_height="84dp"
                 android:text="Search"
-                android:id="@+id/button" />
+                android:textAllCaps="false"/>
         </LinearLayout>
 
     </LinearLayout>

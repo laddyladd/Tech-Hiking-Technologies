@@ -20,6 +20,12 @@ public class myitems extends AppCompatActivity implements View.OnClickListener, 
     ListView listView;
     String s;
     Button b;
+    Button bb;
+    ArrayList<Item> itemm;
+    ArrayList<String> pending;
+    ArrayList<String> myItems;
+    Integer where;
+    ArrayAdapter<String> arrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,24 +33,62 @@ public class myitems extends AppCompatActivity implements View.OnClickListener, 
         setContentView(R.layout.activity_myitems);
         listView = (ListView) findViewById(R.id.listView);
         b = (Button) findViewById(R.id.buttonb);
+
+        bb = (Button)findViewById(R.id.button4);
+
         b.setOnClickListener(this);
-        List<String> your_array_list = new ArrayList<String>();
-        your_array_list.add("Canoe:Pending");
-        your_array_list.add("bike:Available");
-        your_array_list.add("graduation gown:Rented Out");
+
+        bb.setOnClickListener(this);
+
+        bb.setTag(1);
+
+
+
+
+
+
+        itemm = new ArrayList<>();
+        pending = new ArrayList<>(getIntent().getStringArrayListExtra("pending"));
+        myItems = new ArrayList<>(getIntent().getStringArrayListExtra("myItems"));
+
+        where = 0;
+
+        DataWrapper dw = (DataWrapper) getIntent().getSerializableExtra("itemm");
+        itemm = dw.getParliaments();
+        where = getIntent().getIntExtra("where", 0);
+        ArrayList<String> your_array_list;
+        if (where > 1)
+        {
+            String x = myItems.get(0);
+            String[] xx = x.split(":");
+            your_array_list = new ArrayList<String>();
+            your_array_list.add(xx[0] + ":Pending");
+        }
+        else
+            your_array_list = new ArrayList<String>(myItems);
+
 
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
                 your_array_list);
-
         listView.setAdapter(arrayAdapter);
         listView.setOnItemClickListener(this);
-
     }
 
     @Override
     public void onClick(View view) {
-        finish();
+        if (view.getTag() == 1)
+        {
+            Intent j = new Intent(this, newitem.class);
+            j.putStringArrayListExtra("pending", pending);
+            j.putStringArrayListExtra("myItems", myItems);
+            j.putExtra("itemm", new DataWrapper(itemm));
+            j.putExtra("where", where);
+            startActivityForResult(j, 1);
+        }
+        else {
+            finish();
+        }
     }
 
     @Override
@@ -54,6 +98,10 @@ public class myitems extends AppCompatActivity implements View.OnClickListener, 
         if (a[1].equals("Pending")) {
             Intent j = new Intent(this, approvedeny.class);
             j.putExtra("item", a[0]);
+            j.putStringArrayListExtra("pending", pending);
+            j.putStringArrayListExtra("myItems", myItems);
+            j.putExtra("itemm", new DataWrapper(itemm));
+            j.putExtra("where", where);
             startActivityForResult(j, 1);
         }
 

@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 /**
  * Created by Adam on 4/20/2016.
  */
@@ -17,6 +19,10 @@ public class rentalterms extends AppCompatActivity implements View.OnClickListen
     TextView del;
     TextView dam;
     TextView l;
+    ArrayList<Item> itemm;
+    ArrayList<String> pending;
+    ArrayList<String> myItems;
+    Integer where;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +41,15 @@ public class rentalterms extends AppCompatActivity implements View.OnClickListen
         del.setText(del.getText() + getIntent().getStringExtra("Deliver"));
         dam.setText(dam.getText() + getIntent().getStringExtra("Damage"));
         l.setText(l.getText() + getIntent().getStringExtra("Late"));
-
+        itemm = new ArrayList<>();
+        pending = new ArrayList<>();
+        myItems = new ArrayList<>();
+        where = 0;
+        pending = getIntent().getStringArrayListExtra("pending");
+        myItems = getIntent().getStringArrayListExtra("myItems");
+        DataWrapper dw = (DataWrapper) getIntent().getSerializableExtra("itemm");
+        itemm = dw.getParliaments();
+        where = getIntent().getIntExtra("where", 0);
     }
 
     @Override

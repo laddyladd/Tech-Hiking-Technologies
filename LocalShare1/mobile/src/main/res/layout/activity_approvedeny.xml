@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00d4ff"
+    android:background="#a6dd70"
     android:weightSum="1">
 
     <LinearLayout
@@ -27,6 +27,7 @@
             android:layout_gravity="center"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Approve/Deny"
+            android:textStyle="bold"
             android:id="@+id/tvName"
             android:textIsSelectable="false"
             android:textSize="30dp" />
@@ -50,7 +51,7 @@
             android:text="Description: "
             android:id="@+id/textViewD"
             android:layout_weight="0.00"
-            android:textSize="30dp" />
+            android:textSize="25dp" />
 
     </LinearLayout>
 
@@ -66,7 +67,7 @@
             android:text="Total Price: $0.00"
             android:id="@+id/textView9"
             android:layout_weight="0.11"
-            android:textSize="30dp" />
+            android:textSize="25dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -80,7 +81,7 @@
             android:layout_height="match_parent"
             android:text="Days Requested: "
             android:id="@+id/textView10"
-            android:textSize="30dp" />
+            android:textSize="25dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -92,19 +93,21 @@
 
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="70dp"
             android:text="Approve"
+            android:textAllCaps="false"
             android:id="@+id/bap"
             android:layout_weight="0.40"
-            android:textSize="30dp" />
+            android:textSize="25dp" />
 
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="70dp"
             android:text="Deny"
+            android:textAllCaps="false"
             android:id="@+id/bd"
             android:layout_weight="0.55"
-            android:textSize="30dp" />
+            android:textSize="25dp" />
     </LinearLayout>
 
 </LinearLayout>

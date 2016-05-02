@@ -28,6 +28,10 @@ public class availableitems extends AppCompatActivity implements View.OnClickLis
     EditText editText;
     ArrayAdapter<String> arrayAdapter;
     private CommHandler commHandler;
+    ArrayList<Item> itemm;
+    ArrayList<String> pending;
+    ArrayList<String> myItems;
+    Integer where;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,13 +40,19 @@ public class availableitems extends AppCompatActivity implements View.OnClickLis
         b = (Button) findViewById(R.id.buttonb);
         b.setOnClickListener(this);
         b.setTag(1);
-        original = new ArrayList<Item>();
+        itemm = new ArrayList<>();
+        pending = new ArrayList<>(getIntent().getStringArrayListExtra("pending"));
+        myItems = new ArrayList<>(getIntent().getStringArrayListExtra("myItems"));
+        where = 0;
+
+        DataWrapper dw = (DataWrapper) getIntent().getSerializableExtra("itemm");
+        itemm = dw.getParliaments();
+        where = getIntent().getIntExtra("where", 0);
+        original = new ArrayList<Item>(itemm);
         oString = new ArrayList<String>();
         tString = new ArrayList<String>();
         //1 is image ignore that null is location we need latitude/longitude and a location checker class for distance
-        original.add(new Item(1, "A canoe for fishing.", null, "$25", "Canoe", "No", "None", "$30 per day", ""));
-        original.add(new Item(1, "A bike for biking.", null, "$15", "Bike", "Yes", "Max $50", "$10 per day", ""));
-        original.add(new Item(1, "A gown for graduating.", null, "$10", "Graduation Gown","Yes", "$30 if stained. $50 if ripped", "None",""));
+
         temp = new ArrayList<Item>(original);
         for (int i = 0; i < original.size(); i++)
         {
@@ -60,7 +70,6 @@ public class availableitems extends AppCompatActivity implements View.OnClickLis
         s.setTag(2);
 
         commHandler = new CommHandler(this);
-        //commHandler.sendItemList(temp);
 
     }
 
@@ -68,6 +77,10 @@ public class availableitems extends AppCompatActivity implements View.OnClickLis
     public void onClick(View view) {
         if (view.getTag() == 1) {
             Intent j = new Intent(this, menu.class);
+            j.putStringArrayListExtra("pending", pending);
+            j.putStringArrayListExtra("myItems", myItems);
+            j.putExtra("itemm", new DataWrapper(itemm));
+            j.putExtra("where", where);
             startActivityForResult(j, 1);
 
         }
@@ -99,7 +112,7 @@ public class availableitems extends AppCompatActivity implements View.OnClickLis
             j.putExtra("Name", original.get(i).getName());
             j.putExtra("Price", original.get(i).getPrice());
             j.putExtra("Description", original.get(i).getDescription());
-            j.putExtra("Deliver", original.get(i).getDelivery());
+            j.putExtra("Deliver", original.get(i).getDeilvery());
             j.putExtra("Damage", original.get(i).getDamage());
             j.putExtra("Late", original.get(i).getLate());
         }
@@ -107,10 +120,14 @@ public class availableitems extends AppCompatActivity implements View.OnClickLis
         j.putExtra("Name", temp.get(i).getName());
         j.putExtra("Price", temp.get(i).getPrice());
         j.putExtra("Description", temp.get(i).getDescription());
-        j.putExtra("Deliver", temp.get(i).getDelivery());
+        j.putExtra("Deliver", temp.get(i).getDeilvery());
         j.putExtra("Damage", temp.get(i).getDamage());
         j.putExtra("Late", temp.get(i).getLate());
         }
+        j.putStringArrayListExtra("pending", pending);
+        j.putStringArrayListExtra("myItems", myItems);
+        j.putExtra("itemm", new DataWrapper(itemm));
+        j.putExtra("where", where);
         startActivityForResult(j, 1);
 
 
@@ -123,7 +140,7 @@ public class availableitems extends AppCompatActivity implements View.OnClickLis
             j.putExtra("Name", original.get(i).getName());
             j.putExtra("Price", original.get(i).getPrice());
             j.putExtra("Description", original.get(i).getDescription());
-            j.putExtra("Deliver", original.get(i).getDelivery());
+            j.putExtra("Deliver", original.get(i).getDeilvery());
             j.putExtra("Damage", original.get(i).getDamage());
             j.putExtra("Late", original.get(i).getLate());
         }
@@ -131,10 +148,14 @@ public class availableitems extends AppCompatActivity implements View.OnClickLis
             j.putExtra("Name", temp.get(i).getName());
             j.putExtra("Price", temp.get(i).getPrice());
             j.putExtra("Description", temp.get(i).getDescription());
-            j.putExtra("Deliver", temp.get(i).getDelivery());
+            j.putExtra("Deliver", temp.get(i).getDeilvery());
             j.putExtra("Damage", temp.get(i).getDamage());
             j.putExtra("Late", temp.get(i).getLate());
         }
+        j.putStringArrayListExtra("pending", pending);
+        j.putStringArrayListExtra("myItems", myItems);
+        j.putExtra("itemm", new DataWrapper(itemm));
+        j.putExtra("where", where);
         startActivityForResult(j, 1);
     }
 }

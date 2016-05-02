@@ -1,141 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00d4ff">
+    android:background="#a6dd70"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:weightSum="1">
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:paddingEnd="30dp"
-            android:layout_weight="0.13">
+            android:layout_weight="0.13"
+            android:orientation="horizontal"
+            android:paddingEnd="30dp">
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="back"
                 android:id="@+id/b"
-                android:layout_gravity="center_horizontal" />
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:text="back" />
 
             <TextView
+                android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_gravity="center"
                 android:gravity="center"
-                android:layout_gravity="center"                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Available Dates"
-                android:id="@+id/textView2" />
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.04">
+            android:layout_weight="0.04"
+            android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/textView23"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Month               Day                  Year"
-                android:id="@+id/textView23" />
+                android:textAppearance="?android:attr/textAppearanceLarge" />
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.04">
+            android:layout_weight="0.04"
+            android:orientation="horizontal">
 
             <Spinner
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="1" />
 
             <Spinner
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/spinner2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="1" />
 
             <Spinner
+                android:id="@+id/spinner3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/spinner3"
                 android:layout_weight="1" />
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.08">
+            android:layout_weight="0.08"
+            android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/textView24"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="To:"
-                android:id="@+id/textView24" />
+                android:textAppearance="?android:attr/textAppearanceLarge" />
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_weight="0.13">
+            android:layout_weight="0.13"
+            android:orientation="vertical">
 
             <TextView
+                android:id="@+id/textView25"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_gravity="center_horizontal"
                 android:text="Month               Day                  Year"
-                android:id="@+id/textView25"
-                android:layout_gravity="center_horizontal" />
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:layout_weight="0.04"
-                android:layout_gravity="center_horizontal">
+                android:orientation="horizontal">
 
                 <Spinner
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:id="@+id/spinner4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
                 <Spinner
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:id="@+id/spinner5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
                 <Spinner
+                    android:id="@+id/spinner6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/spinner6"
                     android:layout_weight="1" />
             </LinearLayout>
         </LinearLayout>
 
         <Button
+            android:id="@+id/s"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Select Dates"
-            android:id="@+id/s"
             android:layout_gravity="center_horizontal"
-            android:layout_weight="0.13" />
+            android:layout_weight="0.13"
+            android:text="Select Dates"
+            android:textAllCaps="false"
+            android:textSize="25dp"/>
 
     </LinearLayout>
 </LinearLayout>

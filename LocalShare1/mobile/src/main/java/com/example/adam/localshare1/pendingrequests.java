@@ -23,6 +23,10 @@ public class pendingrequests extends AppCompatActivity implements View.OnClickLi
     ArrayList<Item> items;
     String s;
     Button b;
+    ArrayList<Item> itemm;
+    ArrayList<String> pending;
+    ArrayList<String> myItems;
+    Integer where;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,13 +49,31 @@ public class pendingrequests extends AppCompatActivity implements View.OnClickLi
         {
             //pass being lazy
         }
-        for (int i = 0; i < items.size(); i++)
-        {
-            your_array_list.add(items.get(i).getName() + ":" + items.get(i).getStatus());
+        itemm = new ArrayList<>();
+        pending = new ArrayList<>();
+        myItems = new ArrayList<>();
+        where = 0;
+        pending = getIntent().getStringArrayListExtra("pending");
+        myItems = getIntent().getStringArrayListExtra("myItems");
+        DataWrapper dw = (DataWrapper) getIntent().getSerializableExtra("itemm");
+        itemm = dw.getParliaments();
+        where = getIntent().getIntExtra("where", 0);
+        try {
+            if (where == 1) {
+                pending.add(items.get(0).getName() + ":" + "Pending");
+            } else {
+                String s = pending.get(0);
+                String[] x = s.split(":");
+                pending.clear();
+                pending.add(x[0] + ":Approved!");
+            }
         }
-
+        catch (Exception e)
+        {
+            //pass more lazy error handling
+        }
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
-                your_array_list );
+                pending );
 
         listView.setAdapter(arrayAdapter);
         listView.setOnItemClickListener(this);
@@ -61,7 +83,12 @@ public class pendingrequests extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View view)
     {
-        finish();
+        Intent j = new Intent(this, menu.class);
+        j.putStringArrayListExtra("pending", pending);
+        j.putStringArrayListExtra("myItems", myItems);
+        j.putExtra("itemm", new DataWrapper(itemm));
+        j.putExtra("where", where);
+        startActivityForResult(j, 1);
     }
     @Override
     public void onItemClick(AdapterView<?> av, View v, int i, long l)
@@ -73,6 +100,16 @@ public class pendingrequests extends AppCompatActivity implements View.OnClickLi
 
             Intent j = new Intent(this, approvedrequest.class);
             j.putExtra("item", a[0]);
+            j.putStringArrayListExtra("pending", pending);
+            j.putStringArrayListExtra("myItems", myItems);
+            j.putExtra("itemm", new DataWrapper(itemm));
+            j.putExtra("where", where);
+            j.putExtra("Name", itemm.get(itemm.size() - 1).getName());
+            j.putExtra("Price",itemm.get(itemm.size() - 1).getPrice());
+            j.putExtra("Description", itemm.get(itemm.size() - 1).getDescription());
+            j.putExtra("Deliver", itemm.get(itemm.size() - 1).getDeilvery());
+            j.putExtra("Damage", itemm.get(itemm.size() - 1).getDamage());
+            j.putExtra("Late", itemm.get(itemm.size() - 1).getLate());
             startActivityForResult(j, 1);
         }
 

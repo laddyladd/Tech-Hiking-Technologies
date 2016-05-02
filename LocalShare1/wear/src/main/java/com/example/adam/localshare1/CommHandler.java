@@ -59,26 +59,7 @@ public class CommHandler implements DataApi.DataListener,
     @Override
     public void onDataChanged(DataEventBuffer dataEventBuffer) {
 
-        for (DataEvent event : dataEventBuffer){
-            if (event.getType() == DataEvent.TYPE_CHANGED){
-                //DataItem changed
-                DataItem item = event.getDataItem();
-                if (item.getUri().getPath().compareTo("/"+ITEM_LIST) == 0){
-                    DataMap dataMap = DataMapItem.fromDataItem(item).getDataMap();
-                    ArrayList<DataMap> dataMaps = dataMap.getDataMapArrayList(ITEM_LIST);
-                    ArrayList<String> nameAndPrice = new ArrayList<String>();
-                    for (DataMap dataMapItem : dataMaps) {
-                        String itemName = dataMap.getString("name");
-                        String itemPrice = dataMap.getString("price");
-                        nameAndPrice.add(itemName + ": " + itemPrice);
-                    }
-                    //availableItemsActivity calls
-                }
-            }
-            else if (event.getType() == DataEvent.TYPE_DELETED){
-                //DataItem deleted
-            }
-        }
+
     }
 
     @Override

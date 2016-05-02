@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#a6dd70"
+    android:weightSum="1">
+
+    <Button
+        android:layout_width="95dp"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:id="@+id/button3"
+        android:layout_weight="0.08" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:layout_weight="0.08">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:text="Name:"
+            android:id="@+id/textView26"
+            android:layout_weight="0.18"
+            android:textSize="30dp" />
+
+        <EditText
+            android:layout_width="276dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText4" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:layout_weight="0.08"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:text="Price:"
+            android:id="@+id/textView27"
+            android:layout_weight="0.18"
+            android:textSize="30dp" />
+
+        <EditText
+            android:layout_width="276dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText5" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:layout_weight="0.08"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:text="Description:"
+            android:id="@+id/textView28"
+            android:layout_weight="0.18"
+            android:textSize="30dp" />
+
+        <EditText
+            android:layout_width="199dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText6" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:layout_weight="0.08"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:text="Delivery:"
+            android:id="@+id/textView29"
+            android:layout_weight="0.18"
+            android:textSize="30dp" />
+
+        <EditText
+            android:layout_width="255dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText9" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:layout_weight="0.08"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:text="Damage Fees:"
+            android:id="@+id/textView30"
+            android:layout_weight="0.18"
+            android:textSize="30dp" />
+
+        <EditText
+            android:layout_width="113dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText10"
+            android:layout_weight="0.64" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:layout_weight="0.08"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:text="Late Fees:"
+            android:id="@+id/textView31"
+            android:layout_weight="0.18"
+            android:textSize="30dp" />
+
+        <EditText
+            android:layout_width="199dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText11" />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Item"
+        android:id="@+id/button2"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.08" />
+</LinearLayout>

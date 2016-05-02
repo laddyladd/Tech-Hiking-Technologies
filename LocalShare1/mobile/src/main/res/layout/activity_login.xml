@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00d4ff"
+    android:background="#a6dd70"
     android:weightSum="1">
 
     <TextView
@@ -10,9 +10,12 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Login"
+        android:textSize="30dp"
         android:id="@+id/textView20"
         android:layout_weight="0.12"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:gravity="center" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -25,7 +28,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Username"
+            android:text="Username:"
+            android:textSize="25dp"
             android:id="@+id/textView21"
             android:layout_weight="0.01" />
 
@@ -47,7 +51,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Password"
+            android:text="Password:"
+            android:textSize="25dp"
             android:id="@+id/textView22" />
 
         <EditText
@@ -60,10 +65,13 @@
     </LinearLayout>
 
     <Button
-        android:layout_width="match_parent"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="Login"
+        android:textAllCaps="false"
         android:id="@+id/buttonl"
-        android:layout_weight="0.12" />
+        android:layout_weight="0.12"
+        android:layout_gravity="center_horizontal"
+        android:textSize="25dp"/>
 
 </LinearLayout>

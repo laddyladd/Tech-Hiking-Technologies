@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 /**
  * Created by Adam on 4/20/2016.
  */
@@ -22,6 +24,11 @@ public class rentitem extends AppCompatActivity implements View.OnClickListener
 
     String Dates;
     Integer Days;
+
+    ArrayList<Item> itemm;
+    ArrayList<String> pending;
+    ArrayList<String> myItems;
+    Integer where;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +50,15 @@ public class rentitem extends AppCompatActivity implements View.OnClickListener
         textView16.setText(getIntent().getStringExtra("Price"));
         String description = getIntent().getStringExtra("Description");
         textView19.setText(description);
+        itemm = new ArrayList<>();
+        pending = new ArrayList<>();
+        myItems = new ArrayList<>();
+        where = 0;
+        pending = getIntent().getStringArrayListExtra("pending");
+        myItems = getIntent().getStringArrayListExtra("myItems");
+        DataWrapper dw = (DataWrapper) getIntent().getSerializableExtra("itemm");
+        itemm = dw.getParliaments();
+        where = getIntent().getIntExtra("where", 0);
     }
     @Override
     public void onClick(View view)
@@ -55,21 +71,26 @@ public class rentitem extends AppCompatActivity implements View.OnClickListener
         else if (i == 2)
         {
             Intent j = new Intent(this, calendar.class);
+            j.putStringArrayListExtra("pending", pending);
+            j.putStringArrayListExtra("myItems", myItems);
+            j.putExtra("itemm", new DataWrapper(itemm));
+            j.putExtra("where", where);
             startActivityForResult(j, 1);
-            //view rental terms
         }
         else if (i == 3) {
             if (!(Dates.equals("")) && !(Days.equals("")))
             {
                 Intent j = new Intent(this, pendingrequests.class);
-                //j.putExtra() I think i literally need to put all the data that goes with item yuck...
                 j.putExtra("Name", getIntent().getStringExtra("Name"));
                 j.putExtra("Price", getIntent().getStringExtra("Price"));
                 j.putExtra("Description", getIntent().getStringExtra("Description"));
                 j.putExtra("Deliver", getIntent().getStringExtra("Deliver"));
                 j.putExtra("Damage", getIntent().getStringExtra("Damage"));
                 j.putExtra("Late", getIntent().getStringExtra("Late"));
-
+                j.putStringArrayListExtra("pending", pending);
+                j.putStringArrayListExtra("myItems", myItems);
+                j.putExtra("itemm", new DataWrapper(itemm));
+                j.putExtra("where", where);
                 startActivityForResult(j, 1);
 
             }
@@ -81,8 +102,8 @@ public class rentitem extends AppCompatActivity implements View.OnClickListener
             if (resultCode == RESULT_OK) {
                 Dates = data.getStringExtra("Formatted Dates");
                 Days = Integer.parseInt(data.getStringExtra("Number of Days"));
-                System.out.println(Dates + "                  " + Days);
-
+                TextView v = (TextView)findViewById(R.id.textView18);
+                v.setText(v.getText() + "25");
             }
         }
     }

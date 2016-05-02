@@ -7,14 +7,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.Spinner;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Adam on 4/20/2016.
@@ -35,6 +33,10 @@ public class calendar extends AppCompatActivity implements View.OnClickListener,
     int ys = 2016;
     int yf = 2016;
     Button s;
+    ArrayList<Item> itemm;
+    ArrayList<String> pending;
+    ArrayList<String> myItems;
+    Integer where;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -101,7 +103,15 @@ public class calendar extends AppCompatActivity implements View.OnClickListener,
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner3.setAdapter(adapter3);
         spinner6.setAdapter(adapter3);
-
+        itemm = new ArrayList<>();
+        pending = new ArrayList<>();
+        myItems = new ArrayList<>();
+        where = 0;
+        pending = getIntent().getStringArrayListExtra("pending");
+        myItems = getIntent().getStringArrayListExtra("myItems");
+        DataWrapper dw = (DataWrapper) getIntent().getSerializableExtra("itemm");
+        itemm = dw.getParliaments();
+        where = getIntent().getIntExtra("where", 0);
     }
 
     @Override

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00d4ff"
+    android:background="#a6dd70"
     android:weightSum="1">
 
     <LinearLayout
@@ -29,7 +29,8 @@
             android:text="Selected Item"
             android:id="@+id/textView7"
             android:textIsSelectable="false"
-            android:textSize="30dp" />
+            android:textSize="30dp"
+            android:textStyle="bold"/>
     </LinearLayout>
 
     <LinearLayout
@@ -82,12 +83,14 @@
     </LinearLayout>
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="20dp"
         android:text="View Rental Terms"
+        android:textAllCaps="false"
         android:id="@+id/bv"
+        android:layout_gravity="center_horizontal"
         android:layout_weight="0.32"
-        android:textSize="30dp" />
+        android:textSize="25dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -96,12 +99,13 @@
         android:layout_weight="0.11" />
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="0dp"
         android:text="Rent"
+        android:textAllCaps="false"
         android:id="@+id/br"
         android:layout_gravity="center_horizontal"
         android:layout_weight="0.36"
-        android:textSize="30dp" />
+        android:textSize="25dp" />
 
 </LinearLayout>
