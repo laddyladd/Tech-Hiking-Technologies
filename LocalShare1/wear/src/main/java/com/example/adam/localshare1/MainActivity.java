@@ -26,6 +26,8 @@ public class MainActivity extends WearableActivity implements ListView.OnItemCli
 
     ListView listView;
     ArrayAdapter<String> arrayAdapter;
+    ArrayList<Item> itemm;
+    ArrayList<String> oString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,31 @@ public class MainActivity extends WearableActivity implements ListView.OnItemCli
 
         commHandler = new CommHandler(this);
 
+        oString = new ArrayList<String>();
+        itemm = new ArrayList<Item>();
+
+        itemm.add(new Item(1, "A canoe for fishing.","1.3 Miles", "$25", "Canoe", "No", "None", "$30 per day", ""));
+        // l = new Locations(-81.4094200, 38.2335930);
+
+        itemm.add(new Item(1, "A bike for biking.",".7 Miles", "$15", "Bike", "Yes", "Max $50", "$10 per day", ""));
+        // l = new Locations(-80.4094200, 36.2335930);
+
+        itemm.add(new Item(1, "A gown for graduating.", "2.2 Miles", "$10", "Graduation Gown","Yes", "$30 if stained. $50 if ripped", "None",""));
+
+        // l = new Locations(-80.4194200, 37.2355930);
+
+        itemm.add(new Item(1, "A calculator for calculating.","3.4 Miles", "$5", "Ti-89 Calculator", "Yes", "$50", "$1 per day", ""));
+        // l = new Locations(-80.4094200, 37.2235930);
+
+        itemm.add(new Item(1, "A snowboard for shredding.","1.5 Miles", "$40", "Snowboard", "Yes", "Max $300", "$30 per day", ""));
+        for (int i = 0; i < itemm.size(); i++) {
+            oString.add(itemm.get(i).getName() + ": " + itemm.get(i).getPrice());
+        }
+        arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
+                oString);
+
+        listView.setAdapter(arrayAdapter);
+        listView.setOnItemClickListener(this);
     }
 
     @Override

@@ -35,6 +35,15 @@ public class CommHandler implements DataApi.DataListener,
 
     public CommHandler(availableitems aa){
         availableitemsActivity = aa;
+        mGoogleApiClient = new GoogleApiClient.Builder(availableitemsActivity)
+                .addApi(Wearable.API)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .build();
+        if (!mGoogleApiClient.isConnected()){
+            mGoogleApiClient.connect();
+        }
+
     }
 
     @Override

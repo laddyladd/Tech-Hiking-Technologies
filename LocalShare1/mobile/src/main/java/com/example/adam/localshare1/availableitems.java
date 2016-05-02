@@ -60,7 +60,7 @@ public class availableitems extends AppCompatActivity implements View.OnClickLis
         s.setTag(2);
 
         commHandler = new CommHandler(this);
-        commHandler.sendItemList(temp);
+        //commHandler.sendItemList(temp);
 
     }
 
