@@ -45,7 +45,7 @@ public class Item
         return p;
     }
     public String getName() {return n;}
-    public String getDeilvery(){return dd;}
+    public String getDelivery(){return dd;}
     public String getDamage(){return ddd;}
     public String getLate(){return ll;}
     public String getStatus(){return s;}

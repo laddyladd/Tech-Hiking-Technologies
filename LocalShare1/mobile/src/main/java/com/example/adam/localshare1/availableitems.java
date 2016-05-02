@@ -27,6 +27,7 @@ public class availableitems extends AppCompatActivity implements View.OnClickLis
     Button s;
     EditText editText;
     ArrayAdapter<String> arrayAdapter;
+    private CommHandler commHandler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +58,9 @@ public class availableitems extends AppCompatActivity implements View.OnClickLis
         s = (Button)findViewById(R.id.button);
         s.setOnClickListener(this);
         s.setTag(2);
+
+        commHandler = new CommHandler(this);
+        commHandler.sendItemList(temp);
 
     }
 
@@ -95,7 +99,7 @@ public class availableitems extends AppCompatActivity implements View.OnClickLis
             j.putExtra("Name", original.get(i).getName());
             j.putExtra("Price", original.get(i).getPrice());
             j.putExtra("Description", original.get(i).getDescription());
-            j.putExtra("Deliver", original.get(i).getDeilvery());
+            j.putExtra("Deliver", original.get(i).getDelivery());
             j.putExtra("Damage", original.get(i).getDamage());
             j.putExtra("Late", original.get(i).getLate());
         }
@@ -103,12 +107,34 @@ public class availableitems extends AppCompatActivity implements View.OnClickLis
         j.putExtra("Name", temp.get(i).getName());
         j.putExtra("Price", temp.get(i).getPrice());
         j.putExtra("Description", temp.get(i).getDescription());
-        j.putExtra("Deliver", temp.get(i).getDeilvery());
+        j.putExtra("Deliver", temp.get(i).getDelivery());
         j.putExtra("Damage", temp.get(i).getDamage());
         j.putExtra("Late", temp.get(i).getLate());
         }
         startActivityForResult(j, 1);
 
 
+    }
+
+    public void moveToWatchClickedItem(int i){
+        Intent j = new Intent(this, selecteditem.class);
+        if (original.size() < temp.size())
+        {
+            j.putExtra("Name", original.get(i).getName());
+            j.putExtra("Price", original.get(i).getPrice());
+            j.putExtra("Description", original.get(i).getDescription());
+            j.putExtra("Deliver", original.get(i).getDelivery());
+            j.putExtra("Damage", original.get(i).getDamage());
+            j.putExtra("Late", original.get(i).getLate());
+        }
+        else{
+            j.putExtra("Name", temp.get(i).getName());
+            j.putExtra("Price", temp.get(i).getPrice());
+            j.putExtra("Description", temp.get(i).getDescription());
+            j.putExtra("Deliver", temp.get(i).getDelivery());
+            j.putExtra("Damage", temp.get(i).getDamage());
+            j.putExtra("Late", temp.get(i).getLate());
+        }
+        startActivityForResult(j, 1);
     }
 }

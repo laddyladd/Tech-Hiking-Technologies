@@ -7,20 +7,10 @@
     android:layout_height="match_parent"
     tools:context="com.example.adam.localshare1.MainActivity"
     tools:deviceIds="wear">
-
-    <TextView
-        android:id="@+id/text"
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_world"
-        app:layout_box="all" />
-
-    <TextView
-        android:id="@+id/clock"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|start"
-        android:textColor="@android:color/white"
-        app:layout_box="all" />
+        android:id="@+id/listView"
+        android:scrollbars="vertical"/>
 
 </android.support.wearable.view.BoxInsetLayout>
