@@ -3,6 +3,7 @@
     package="com.example.adam.localshare1">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -19,6 +20,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".SignUp"
+            android:screenOrientation="portrait">
+        </activity>
+
         <activity android:name=".newitem"
             android:screenOrientation="portrait">
 

@@ -10,8 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.firebase.client.Firebase;
+
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Adam on 4/20/2016.
@@ -36,6 +37,7 @@ public class availableitems extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_availableitems);
+        Firebase.setAndroidContext(this);
         listView = (ListView) findViewById(R.id.listView);
         b = (Button) findViewById(R.id.buttonb);
         b.setOnClickListener(this);
@@ -75,7 +77,7 @@ public class availableitems extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View view) {
-        if (view.getTag() == 1) {
+        if ((int)view.getTag() == 1) {
             Intent j = new Intent(this, menu.class);
             j.putStringArrayListExtra("pending", pending);
             j.putStringArrayListExtra("myItems", myItems);

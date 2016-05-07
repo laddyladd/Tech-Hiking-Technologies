@@ -57,7 +57,7 @@ public class newitem extends AppCompatActivity implements View.OnClickListener
     @Override
     public void onClick(View view)
     {
-        if (view.getTag() == 1)
+        if ((int)view.getTag() == 1)
         {
             itemm.add(new Item(1, description.getText().toString(),"1237", price.getText().toString(),name.getText().toString(), delivery.getText().toString(), damage.getText().toString(), late.getText().toString(), ""));
             myItems.add(itemm.get(itemm.size() - 1).getName() + ":Available");

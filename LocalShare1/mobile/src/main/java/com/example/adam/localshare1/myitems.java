@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Adam on 4/20/2016.
@@ -77,7 +76,7 @@ public class myitems extends AppCompatActivity implements View.OnClickListener, 
 
     @Override
     public void onClick(View view) {
-        if (view.getTag() == 1)
+        if ((int)view.getTag() == 1)
         {
             Intent j = new Intent(this, newitem.class);
             j.putStringArrayListExtra("pending", pending);

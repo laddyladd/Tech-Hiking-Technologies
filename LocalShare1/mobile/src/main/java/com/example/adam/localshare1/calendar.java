@@ -117,7 +117,7 @@ public class calendar extends AppCompatActivity implements View.OnClickListener,
     @Override
     public void onClick(View view)
     {
-        if (view.getTag() == 2)
+        if ((int)view.getTag() == 2)
         {
 
             DateFormat dff = new SimpleDateFormat("dd:MM:yyyy");
@@ -148,32 +148,28 @@ public class calendar extends AppCompatActivity implements View.OnClickListener,
     @Override
     public void onItemSelected(AdapterView<?> a, View v, int i, long l)
     {
-
-        if (a.getTag() == 1)
-        {
-            ms = (Integer)a.getSelectedItem();
-        }
-        else if (a.getTag() == 2)
-        {
-            ds = (Integer)a.getSelectedItem();
-        }
-        else if (a.getTag() == 3)
-        {
-            ys = (Integer)a.getSelectedItem();
-        }
-        else if (a.getTag() == 4)
-        {
-            mf = (Integer)a.getSelectedItem();
-        }
-        else if (a.getTag() == 5)
-        {
-            df = (Integer)a.getSelectedItem();
-        }
-        else if (a.getTag() == 6)
-        {
-            yf = (Integer)a.getSelectedItem();
+        switch((int)a.getTag()) {
+            case 1:
+                ms = (Integer) a.getSelectedItem();
+                break;
+            case 2:
+                ds = (Integer) a.getSelectedItem();
+                break;
+            case 3:
+                ys = (Integer)a.getSelectedItem();
+                break;
+            case 4:
+                mf = (Integer)a.getSelectedItem();
+                break;
+            case 5:
+                df = (Integer)a.getSelectedItem();
+                break;
+            case 6:
+                yf = (Integer)a.getSelectedItem();
+                break;
         }
     }
+
     @Override
     public void onNothingSelected(AdapterView parent) {
         // Do nothing.
