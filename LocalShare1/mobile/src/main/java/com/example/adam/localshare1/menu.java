@@ -69,8 +69,6 @@ public class menu extends AppCompatActivity implements View.OnClickListener{
             j.putExtra("itemm", new DataWrapper(itemm));
             j.putExtra("where", where);
             startActivityForResult(j, 1);
-
-
         }
         else if (i == 2)
         {
@@ -83,7 +81,7 @@ public class menu extends AppCompatActivity implements View.OnClickListener{
         }
         else if (i == 3)
         {
-            Intent j = new Intent(this, availableitems.class);
+            Intent j = new Intent(this, availableitemsold.class);
             j.putStringArrayListExtra("pending", pending);
             j.putStringArrayListExtra("myItems", myItems);
             j.putExtra("itemm", new DataWrapper(itemm));

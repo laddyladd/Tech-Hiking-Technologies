@@ -48,9 +48,9 @@ public void login() {
         @Override
         public void onAuthenticated(AuthData authData) {
             System.out.println("User ID: " + authData.getUid() + ", Provider: " + authData.getProvider());
-            Intent j = new Intent(getApplicationContext(), availableitems.class);
+            Intent j = new Intent(getApplicationContext(), AvailableItems.class);
             startActivity(j);
-
+            finish();
         }
         @Override
         public void onAuthenticationError(FirebaseError firebaseError) {

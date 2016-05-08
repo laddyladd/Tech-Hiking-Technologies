@@ -90,12 +90,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onAuthenticated(AuthData authData) {
                 System.out.println("User ID: " + authData.getUid() + ", Provider: " + authData.getProvider());
-                Intent j = new Intent(getApplicationContext(), availableitems.class);
+                Intent j = new Intent(getApplicationContext(), AvailableItems.class);
                 j.putStringArrayListExtra("pending", pending);
                 j.putStringArrayListExtra("myItems", myItems);
                 j.putExtra("itemm", new DataWrapper(itemm));
                 j.putExtra("where", where);
                 startActivityForResult(j, 1);
+                finish();
             }
             @Override
             public void onAuthenticationError(FirebaseError firebaseError) {

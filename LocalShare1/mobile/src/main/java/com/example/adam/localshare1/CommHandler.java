@@ -4,18 +4,13 @@ import android.os.Bundle;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.wearable.DataApi;
 import com.google.android.gms.wearable.DataEvent;
 import com.google.android.gms.wearable.DataEventBuffer;
 import com.google.android.gms.wearable.DataItem;
 import com.google.android.gms.wearable.DataMap;
 import com.google.android.gms.wearable.DataMapItem;
-import com.google.android.gms.wearable.PutDataMapRequest;
-import com.google.android.gms.wearable.PutDataRequest;
 import com.google.android.gms.wearable.Wearable;
-
-import java.util.ArrayList;
 
 /**
  * Created by stephenwon on 4/30/16.
@@ -28,12 +23,12 @@ public class CommHandler implements DataApi.DataListener,
     static android.os.Handler UIHandler = null;
 
     GoogleApiClient mGoogleApiClient;
-    availableitems availableitemsActivity;
+    availableitemsold availableitemsActivity;
 
     public static String ITEM_ID = "item id";
     public static String ITEM_LIST = "item list";
 
-    public CommHandler(availableitems aa){
+    public CommHandler(availableitemsold aa){
         availableitemsActivity = aa;
         mGoogleApiClient = new GoogleApiClient.Builder(availableitemsActivity)
                 .addApi(Wearable.API)
