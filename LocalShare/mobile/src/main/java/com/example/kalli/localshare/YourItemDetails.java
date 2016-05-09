@@ -107,7 +107,9 @@ public class YourItemDetails extends AppCompatActivity implements View.OnClickLi
         }
         else if (view.getId() == edit.getId())
         {
-
+            Intent i = new Intent(this, EditItem.class);
+            i.putExtra("itemUid", itemUid);
+            startActivity(i);
         }
 
     }

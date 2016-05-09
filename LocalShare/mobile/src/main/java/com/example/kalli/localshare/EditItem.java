@@ -2,6 +2,7 @@ package com.example.kalli.localshare;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -14,60 +15,50 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
 /**
- * Created by kalli on 5/9/16.
+ * Created by macbookair5 on 5/9/16.
  */
-public class EditRentalTerms extends AppCompatActivity implements View.OnClickListener {
+public class EditItem extends AppCompatActivity implements View.OnClickListener {
 
-
-    final Firebase ref = new Firebase("https://localshare.firebaseio.com");
-
-    TextView itemName;
-    EditText itemPrice;
-    EditText itemLateFee;
-    EditText itemDamageFee;
-    EditText itemRentalTerms;
+    EditText itemName;
+    EditText itemDescription;
+    EditText itemPricePerDay;
+    EditText itemDelivery;
     Button save;
     String itemUid;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_rental_terms);
+        setContentView(R.layout.activity_edit_item);
         Firebase.setAndroidContext(this);
 
-        itemName = (TextView) findViewById(R.id.itemName);
-        itemPrice = (EditText) findViewById(R.id.itemPrice);
-        itemLateFee = (EditText) findViewById(R.id.itemLateFee);
-        itemDamageFee = (EditText) findViewById(R.id.itemDamageFee);
-        itemRentalTerms = (EditText) findViewById(R.id.itemRentalTerms);
+        itemName = (EditText) findViewById(R.id.itemName);
+        itemDescription = (EditText) findViewById(R.id.itemDescription);
+        itemPricePerDay = (EditText) findViewById(R.id.itemPricePerDay);
+        itemDelivery = (EditText) findViewById(R.id.itemDelivery);
         save = (Button) findViewById(R.id.btn_save);
         save.setOnClickListener(this);
 
         itemUid = getIntent().getExtras().getString("itemUid");
 
         Firebase itemRef = new Firebase("https://localshare.firebaseio.com/items/" + itemUid);
-// Attach an listener to read the data at our posts reference
+        // Attach an listener to read the data at our posts reference
         itemRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 String name = (String) snapshot.child("name").getValue();
+                String description = (String) snapshot.child("description").getValue();
                 String price = (String) snapshot.child("pricePerDay").getValue();
-                String late = (String) snapshot.child("lateFeePerDay").getValue();
-                String damage = (String) snapshot.child("damageFee").getValue();
-                String terms = (String) snapshot.child("rentalTerms").getValue();
+                String delivery = (String) snapshot.child("delivery").getValue();
 
                 if (name != null)
                     itemName.setText(name);
-                else
-                    itemName.setText("");
+                if (description != null)
+                    itemDescription.setText(description);
                 if (price != null)
-                    itemPrice.setText(price);
-                if (late != null)
-                    itemLateFee.setText(late);
-                if (damage != null)
-                    itemDamageFee.setText(damage);
-                if (terms != null)
-                    itemRentalTerms.setText(terms);
+                    itemPricePerDay.setText(price);
+                if (delivery != null)
+                    itemDelivery.setText(delivery);
 
 
             }
@@ -84,10 +75,10 @@ public class EditRentalTerms extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view) {
         Firebase itemRef = new Firebase("https://localshare.firebaseio.com/items/" + itemUid);
 
-        itemRef.child("pricePerDay").setValue(itemPrice.getText().toString());
-        itemRef.child("lateFeePerDay").setValue(itemLateFee.getText().toString());
-        itemRef.child("damageFee").setValue(itemDamageFee.getText().toString());
-        itemRef.child("rentalTerms").setValue(itemRentalTerms.getText().toString());
+        itemRef.child("name").setValue(itemName.getText().toString());
+        itemRef.child("description").setValue(itemDescription.getText().toString());
+        itemRef.child("pricePerDay").setValue(itemPricePerDay.getText().toString());
+        itemRef.child("delivery").setValue(itemDelivery.getText().toString());
 
         Intent i = new Intent(this, YourItemDetails.class);
         i.putExtra("itemUid", itemUid);
@@ -96,10 +87,4 @@ public class EditRentalTerms extends AppCompatActivity implements View.OnClickLi
 
     }
 }
-
-
-
-
-
-
 

@@ -3,6 +3,7 @@ package com.example.kalli.localshare;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,7 @@ import com.firebase.client.Firebase;
 /**
  * Created by kalli on 5/8/16.
  */
-public class NewItem extends BaseActivity implements View.OnClickListener {
+public class NewItem extends AppCompatActivity implements View.OnClickListener {
 
     final Firebase ref = new Firebase("https://localshare.firebaseio.com");
 
@@ -34,16 +35,7 @@ public class NewItem extends BaseActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Firebase.setAndroidContext(this);
-
-
-
-
-        // inflate the view
-        r = (FrameLayout) findViewById(R.id.content_base);
-        LayoutInflater vi = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View v = vi.inflate(R.layout.activity_new_item, null);
-        ViewGroup insertPoint = (ViewGroup) findViewById(R.id.content_base);
-        insertPoint.addView(v, 0, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT));
+        setContentView(R.layout.activity_new_item);
 
         save = (Button) findViewById(R.id.btn_save);
         save.setOnClickListener(this);
@@ -91,10 +83,6 @@ public class NewItem extends BaseActivity implements View.OnClickListener {
             Item item = new Item(uid, postedBy, itemName, itemDescription, itemPricePerDay, itemLateFee, itemDamageFee, null, itemDelivery, itemRentalTerms);
 
             newItemRef.setValue(item);
-
-            // save that reference on the user object
-//            Firebase userItemRef = ref.child("users/" + postedBy + "/items/" + itemId);
-//            userItemRef.setValue(itemId);
 
             Intent j = new Intent(this, MyItems.class);
             startActivity(j);
