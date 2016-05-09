@@ -1,6 +1,7 @@
 package com.example.kalli.localshare;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
@@ -71,7 +73,26 @@ public class AvailableItems extends BaseActivity implements View.OnClickListener
                 itemsAsStrings.add(item.getName());
                 arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1,
                         itemsAsStrings);
-                itemListView.setAdapter(arrayAdapter);
+
+                ArrayAdapter<String> adapter=new ArrayAdapter<String>(
+                        getApplicationContext(), android.R.layout.simple_list_item_1, itemsAsStrings){
+
+                    @Override
+                    public View getView(int position, View convertView,
+                                        ViewGroup parent) {
+                        View view =super.getView(position, convertView, parent);
+
+                        TextView textView=(TextView) view.findViewById(android.R.id.text1);
+
+                        /*YOUR CHOICE OF COLOR*/
+                        textView.setTextColor(Color.BLACK);
+
+                        return view;
+                    }
+                };
+                /*SET THE ADAPTER TO LISTVIEW*/
+
+                itemListView.setAdapter(adapter);
             }
             @Override
             public void onChildChanged(DataSnapshot snapshot, String previousChildKey) {
