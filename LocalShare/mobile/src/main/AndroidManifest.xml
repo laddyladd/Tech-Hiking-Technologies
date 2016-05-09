@@ -64,6 +64,9 @@
         <activity
             android:name=".EditItem"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".SetAvailability"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

@@ -103,7 +103,9 @@ public class YourItemDetails extends AppCompatActivity implements View.OnClickLi
         }
         else if (view.getId() == setAvailability.getId())
         {
-
+            Intent i = new Intent(this, SetAvailability.class);
+            i.putExtra("itemUid", itemUid);
+            startActivity(i);
         }
         else if (view.getId() == edit.getId())
         {
