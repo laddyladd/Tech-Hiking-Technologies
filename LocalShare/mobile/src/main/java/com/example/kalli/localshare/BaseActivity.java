@@ -78,13 +78,14 @@ public class BaseActivity extends AppCompatActivity
             Intent j = new Intent(this, AvailableItems.class);
             startActivity(j);
         } else if (id == R.id.nav_pending_requests) {
+            Intent j = new Intent(this, PendingRequests.class);
+            startActivity(j);
         } else if (id == R.id.nav_my_items) {
             Intent j = new Intent(this, MyItems.class);
             startActivity(j);
         } else if (id == R.id.nav_my_account) {
             Intent j = new Intent(this, MyAccount.class);
             startActivity(j);
-
         } else if (id == R.id.nav_sign_out) {
             ref.unauth();
             Intent j = new Intent(this, MainActivity.class);

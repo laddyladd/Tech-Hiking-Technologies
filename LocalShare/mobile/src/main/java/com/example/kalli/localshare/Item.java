@@ -6,33 +6,36 @@ import java.io.Serializable;
  * Created by kalli on 5/8/16.
  */
 public class Item implements Serializable {
+    String uid;
     String name;
     String description;
-    double pricePerDay;
-    double lateFeePerDay;
-    double damageFee;
-    Address address;
+    String pricePerDay;
+    String lateFeePerDay;
+    String damageFee;
     Status status;
+    String delivery;
     String rentalTerms;
-    String phoneNumber;
-    String email;
+
 
     public enum Status {
         AVAILABLE, RENTED, UNAVAILABLE
     }
 
-    public Item(String name, String description, double pricePerDay, double lateFeePerDay, double damageFee, String street, String city, String state, String zip, Status status, String rentalTerms, String phoneNumber, String email) {
+    public Item(String uid, String name, String description, String pricePerDay, String lateFeePerDay, String damageFee, Status status, String delivery, String rentalTerms) {
+        this.uid = uid;
         this.name = name;
         this.description = description;
         this.pricePerDay = pricePerDay;
         this.lateFeePerDay = lateFeePerDay;
         this.damageFee = damageFee;
-        this.address = new Address(street, city, state, zip);
         this.status = status;
+        this.delivery = delivery;
         this.rentalTerms = rentalTerms;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
     }
+
+    public String getUid() { return uid; }
+
+    public void setUid(String uid) { this.uid=uid; }
 
     public String getName() {
         return name;
@@ -50,36 +53,36 @@ public class Item implements Serializable {
         this.description = description;
     }
 
-    public double getPricePerDay() {
+    public String getPricePerDay() {
         return pricePerDay;
     }
 
-    public void setPricePerDay(double pricePerDay) {
+    public void setPricePerDay(String pricePerDay) {
         this.pricePerDay = pricePerDay;
     }
 
-    public double getLateFeePerDay() {
+    public String getLateFeePerDay() {
         return lateFeePerDay;
     }
 
-    public void setLateFeePerDay(double lateFeePerDay) {
+    public void setLateFeePerDay(String lateFeePerDay) {
         this.lateFeePerDay = lateFeePerDay;
     }
 
-    public double getDamageFee() {
+    public String getDamageFee() {
         return damageFee;
     }
 
-    public void setDamageFee(double damageFee) {
+    public void setDamageFee(String damageFee) {
         this.damageFee = damageFee;
     }
 
-    public Address getAddress() {
-        return address;
+    public String getDelivery() {
+        return delivery;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setDelivery(String delivery) {
+        this.delivery = delivery;
     }
 
     public Status getStatus() {
@@ -97,22 +100,5 @@ public class Item implements Serializable {
     public void setRentalTerms(String rentalTerms) {
         this.rentalTerms = rentalTerms;
     }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
 
 }

@@ -98,7 +98,12 @@ public class MyAccount extends BaseActivity implements View.OnClickListener {
             User user = new User(uid, name.getText().toString(), phone.getText().toString(), address);
 
             Firebase usersRef = ref.child("users").child(uid);
-            usersRef.setValue(user);
+            usersRef.child("name").setValue(user.getName());
+            usersRef.child("phone").setValue(user.getPhone());
+            usersRef.child("address/street").setValue(address.getStreet());
+            usersRef.child("address/city").setValue(address.getCity());
+            usersRef.child("address/state").setValue(address.getState());
+            usersRef.child("address/zip").setValue(address.getZip());
 
             Context context = getApplicationContext();
             CharSequence text = "Saved";

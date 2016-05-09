@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onAuthenticationError(FirebaseError firebaseError) {
                 Context context = getApplicationContext();
-                CharSequence text = "Error";
+                CharSequence text = "Error" + firebaseError;
                 int duration = Toast.LENGTH_LONG;
 
                 Toast toast = Toast.makeText(context, text, duration);

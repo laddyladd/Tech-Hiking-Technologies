@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -9,20 +10,11 @@
         android:layout_gravity="center_horizontal"
         android:textSize="24dip"
         android:textColor="#FF000000"
-        android:text="Available Items"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/search"
-        android:textColor="#FF000000"
-        android:textColorHint="#808080"
-        android:hint="Search..."/>
+        android:text="Pending Requests"/>
     <ListView
-        android:id="@+id/items_list"
+        android:id="@+id/pending_requests_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#FF000000"
-        android:textColorHint="#808080">
+        android:layout_height="wrap_content" >
     </ListView>
 
 </LinearLayout>
