@@ -45,12 +45,11 @@
             android:id="@+id/imageView" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Description: "
+            android:text="Description: A sleeping bag for sleeping"
             android:id="@+id/textViewD"
-            android:layout_weight="0.00"
             android:textSize="25dp" />
 
     </LinearLayout>

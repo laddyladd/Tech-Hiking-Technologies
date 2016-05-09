@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ListView;
@@ -29,10 +30,11 @@ public class AvailableItems extends BaseActivity implements View.OnClickListener
     FrameLayout r;
     ListView itemListView;
     EditText search;
-
+    Button searchB;
     ArrayList<Item> items;
     ArrayList<String> itemsAsStrings;
     ArrayAdapter<String> arrayAdapter;
+    ArrayList<String> searcher;
     CommHandler commHandler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,8 @@ public class AvailableItems extends BaseActivity implements View.OnClickListener
         //find elements
         itemListView = (ListView) findViewById(R.id.items_list);
         search = (EditText) findViewById(R.id.search);
+        searchB = (Button)findViewById(R.id.searchB);
+        searchB.setOnClickListener(this);
         Firebase itemsRef = new Firebase("https://localshare.firebaseio.com/items");
 
         items = new ArrayList<Item>();
@@ -123,7 +127,19 @@ public class AvailableItems extends BaseActivity implements View.OnClickListener
 
     @Override
     public void onClick(View view) {
+        String check = search.getText().toString().toLowerCase();
+        searcher = new ArrayList<String>(itemsAsStrings);
+        itemsAsStrings.clear();
 
+        for (int i = 0; i < searcher.size(); i++) {
+            if (check.equals("")) {//if blank reset all data
+                itemsAsStrings.add(searcher.get(i));
+            } else if (check.equals(searcher.get(i).toLowerCase())) {
+                itemsAsStrings.add(searcher.get(i));
+
+            }
+        }
+        arrayAdapter.notifyDataSetChanged();
 
     }
     @Override

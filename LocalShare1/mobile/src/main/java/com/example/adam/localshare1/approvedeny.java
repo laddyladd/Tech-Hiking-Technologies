@@ -43,7 +43,6 @@ public class approvedeny  extends AppCompatActivity implements View.OnClickListe
         bb.setTag(3);
         String s = getIntent().getStringExtra("item");
         TextView d = (TextView)findViewById(R.id.textViewD);
-        d.setText("Description: It is a " + s);
         itemm = new ArrayList<>();
         pending = new ArrayList<>();
         myItems = new ArrayList<>();
@@ -61,7 +60,7 @@ public class approvedeny  extends AppCompatActivity implements View.OnClickListe
         int i = (int)view.getTag();
         if (i == 1)
         {
-            //approve request toast
+            //approve request toastjnhhhhhhhhhhhhhhhhhhhhhhhhhy
         }
         else if (i == 2)
         {
