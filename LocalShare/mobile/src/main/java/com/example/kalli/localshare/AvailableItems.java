@@ -1,6 +1,7 @@
 package com.example.kalli.localshare;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -59,7 +60,9 @@ public class AvailableItems extends BaseActivity implements View.OnClickListener
             // Retrieve new posts as they are added to the database
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
+                System.out.print(snapshot.getKey());
                 String itemUid = (String) snapshot.child("uid").getValue();
+                String itemPostedByUser = (String) snapshot.child("postedByUser").getValue();
                 String itemName = (String) snapshot.child("name").getValue();
                 String itemDescription = (String) snapshot.child("description").getValue();
                 String itemPrice = (String) snapshot.child("pricePerDay").getValue();
@@ -68,7 +71,7 @@ public class AvailableItems extends BaseActivity implements View.OnClickListener
                 String itemDelivery = (String) snapshot.child("delivery").getValue();
                 String itemRentalTerms = (String) snapshot.child("rentalTerms").getValue();
 
-                Item item = new Item(itemUid, itemName, itemDescription, itemPrice, itemLateFee, itemDamageFee, null, itemDelivery, itemRentalTerms);
+                Item item = new Item(itemUid,itemPostedByUser, itemName, itemDescription, itemPrice, itemLateFee, itemDamageFee, Item.Status.AVAILABLE, itemDelivery, itemRentalTerms);
                 items.add(item);
                 itemsAsStrings.add(item.getName());
                 arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1,
@@ -126,6 +129,12 @@ public class AvailableItems extends BaseActivity implements View.OnClickListener
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position,
                             long id) {
+
+        Item item = items.get(position);
+        Intent i = new Intent(this, ItemDetails.class);
+        i.putExtra("itemUid", item.getUid());
+        startActivity(i);
+
 //        Intent intent = new Intent(this, SendMessage.class);
 //        String message = "abc";
 ////        intent.putExtra(EXTRA_MESSAGE, message);

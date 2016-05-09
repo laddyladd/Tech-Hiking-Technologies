@@ -56,10 +56,11 @@ public class MyItems extends BaseActivity implements View.OnClickListener {
             // Retrieve new posts as they are added to the database
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
-                String itemUid = (String) snapshot.child("uid").getValue();
+                String postedByUser = (String) snapshot.child("postedByUser").getValue();
 
                 Firebase ref = new Firebase("https://localshare.firebaseio.com/");
-                if (itemUid != null && itemUid.equals(ref.getAuth().getUid())) {
+                if (postedByUser != null && postedByUser.equals(ref.getAuth().getUid())) {
+                    String itemUid = snapshot.getKey();
                     String itemName = (String) snapshot.child("name").getValue();
                     String itemDescription = (String) snapshot.child("description").getValue();
                     String itemPrice = (String) snapshot.child("pricePerDay").getValue();
@@ -68,7 +69,7 @@ public class MyItems extends BaseActivity implements View.OnClickListener {
                     String itemDelivery = (String) snapshot.child("delivery").getValue();
                     String itemRentalTerms = (String) snapshot.child("rentalTerms").getValue();
 
-                    Item item = new Item(itemUid, itemName, itemDescription, itemPrice, itemLateFee, itemDamageFee, null, itemDelivery, itemRentalTerms);
+                    Item item = new Item(itemUid, postedByUser, itemName, itemDescription, itemPrice, itemLateFee, itemDamageFee, null, itemDelivery, itemRentalTerms);
                     myItems.add(item);
                     myItemsAsStrings.add(item.getName());
 

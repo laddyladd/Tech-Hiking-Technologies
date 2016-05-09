@@ -70,17 +70,18 @@ public class NewItem extends BaseActivity implements View.OnClickListener {
             String itemDelivery = delivery.getText().toString();
             String itemRentalTerms = rentalTerms.getText().toString();
 
-            Item item = new Item(postedBy, itemName, itemDescription, itemPricePerDay, itemLateFee, itemDamageFee, null, itemDelivery, itemRentalTerms);
-
             //push and get the UID of item just pushed
             Firebase itemsRef = ref.child("items");
             Firebase newItemRef = itemsRef.push();
+            String uid = newItemRef.getKey();
+            System.out.print("new item ref get key: " + uid + " posted By: " + postedBy);
+            Item item = new Item(uid, postedBy, itemName, itemDescription, itemPricePerDay, itemLateFee, itemDamageFee, null, itemDelivery, itemRentalTerms);
+
             newItemRef.setValue(item);
-            String itemId = newItemRef.getKey();
 
             // save that reference on the user object
-            Firebase userItemRef = ref.child("users/" + postedBy + "/items/" + itemId);
-            userItemRef.setValue(itemId);
+//            Firebase userItemRef = ref.child("users/" + postedBy + "/items/" + itemId);
+//            userItemRef.setValue(itemId);
 
             Intent j = new Intent(this, MyItems.class);
             startActivity(j);

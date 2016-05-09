@@ -7,6 +7,7 @@ import java.io.Serializable;
  */
 public class Item implements Serializable {
     String uid;
+    String postedByUser;
     String name;
     String description;
     String pricePerDay;
@@ -21,14 +22,18 @@ public class Item implements Serializable {
         AVAILABLE, RENTED, UNAVAILABLE
     }
 
-    public Item(String uid, String name, String description, String pricePerDay, String lateFeePerDay, String damageFee, Status status, String delivery, String rentalTerms) {
+    public Item(String uid, String postedByUser, String name, String description, String pricePerDay, String lateFeePerDay, String damageFee, Status status, String delivery, String rentalTerms) {
         this.uid = uid;
+        this.postedByUser = postedByUser;
         this.name = name;
         this.description = description;
         this.pricePerDay = pricePerDay;
         this.lateFeePerDay = lateFeePerDay;
         this.damageFee = damageFee;
-        this.status = status;
+        if(status == null)
+            this.status = Status.AVAILABLE;
+        else
+            this.status = status;
         this.delivery = delivery;
         this.rentalTerms = rentalTerms;
     }
@@ -36,6 +41,10 @@ public class Item implements Serializable {
     public String getUid() { return uid; }
 
     public void setUid(String uid) { this.uid=uid; }
+
+    public String getPostedByUser() { return postedByUser; }
+
+    public void setPostedByUser(String postedByUser) { this.postedByUser=postedByUser; }
 
     public String getName() {
         return name;
