@@ -79,6 +79,8 @@ public class BaseActivity extends AppCompatActivity
             startActivity(j);
         } else if (id == R.id.nav_pending_requests) {
         } else if (id == R.id.nav_my_items) {
+            Intent j = new Intent(this, MyItems.class);
+            startActivity(j);
         } else if (id == R.id.nav_my_account) {
             Intent j = new Intent(this, MyAccount.class);
             startActivity(j);
