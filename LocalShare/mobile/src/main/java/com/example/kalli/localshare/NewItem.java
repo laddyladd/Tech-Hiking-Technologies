@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.firebase.client.Firebase;
 
@@ -61,8 +62,20 @@ public class NewItem extends BaseActivity implements View.OnClickListener {
     public void onClick(View view) {
         if(view.getId() == save.getId())
         {
-            String postedBy = ref.getAuth().getUid();
             String itemName = name.getText().toString();
+
+            if(itemName == null || itemName.equals(""))
+            {
+                Context context = getApplicationContext();
+                CharSequence text = "You must specify a name";
+                int duration = Toast.LENGTH_LONG;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+                return;
+            }
+
+            String postedBy = ref.getAuth().getUid();
             String itemDescription = description.getText().toString();
             String itemPricePerDay = pricePerDay.getText().toString();
             String itemLateFee = lateFee.getText().toString();

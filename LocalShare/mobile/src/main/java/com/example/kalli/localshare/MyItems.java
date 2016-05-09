@@ -135,7 +135,7 @@ public class MyItems extends BaseActivity implements View.OnClickListener, ListV
                             long id) {
 
         Item item = myItems.get(position);
-        Intent i = new Intent(this, ItemDetails.class);
+        Intent i = new Intent(this, YourItemDetails.class);
         i.putExtra("itemUid", item.getUid());
         startActivity(i);
 

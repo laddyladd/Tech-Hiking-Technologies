@@ -53,6 +53,12 @@
         <activity
             android:name=".RentalTerms"
             android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".YourItemDetails"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".EditRentalTerms"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
