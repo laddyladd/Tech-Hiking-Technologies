@@ -50,6 +50,9 @@
         <activity
             android:name=".ItemDetails"
             android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".RentalTerms"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -23,7 +24,7 @@ import java.util.ArrayList;
 /**
  * Created by kalli on 5/8/16.
  */
-public class MyItems extends BaseActivity implements View.OnClickListener {
+public class MyItems extends BaseActivity implements View.OnClickListener, ListView.OnItemClickListener {
 
     FrameLayout r;
     Button newItem;
@@ -116,6 +117,7 @@ public class MyItems extends BaseActivity implements View.OnClickListener {
                 System.out.println("Firebase error " + message);
             }
         });
+        myItemsListView.setOnItemClickListener(this);
 
     }
 
@@ -126,5 +128,16 @@ public class MyItems extends BaseActivity implements View.OnClickListener {
             Intent j = new Intent(this, NewItem.class);
             startActivity(j);
         }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position,
+                            long id) {
+
+        Item item = myItems.get(position);
+        Intent i = new Intent(this, ItemDetails.class);
+        i.putExtra("itemUid", item.getUid());
+        startActivity(i);
+
     }
 }

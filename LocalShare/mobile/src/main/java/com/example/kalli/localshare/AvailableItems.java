@@ -135,11 +135,8 @@ public class AvailableItems extends BaseActivity implements View.OnClickListener
         i.putExtra("itemUid", item.getUid());
         startActivity(i);
 
-//        Intent intent = new Intent(this, SendMessage.class);
-//        String message = "abc";
-////        intent.putExtra(EXTRA_MESSAGE, message);
-//        startActivity(intent);
     }
+
     public void moveToWatchClickedItem(int i){
 
     }

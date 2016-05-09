@@ -1,7 +1,9 @@
 package com.example.kalli.localshare;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -13,7 +15,7 @@ import com.firebase.client.ValueEventListener;
 /**
  * Created by kalli on 5/9/16.
  */
-public class ItemDetails extends AppCompatActivity {
+public class ItemDetails extends AppCompatActivity implements View.OnClickListener {
 
     Button rentalTerms;
     Button viewAvailability;
@@ -24,6 +26,7 @@ public class ItemDetails extends AppCompatActivity {
     TextView itemPrice;
     TextView itemStatus;
     TextView itemDelivery;
+    String itemUid;
 
     final Firebase ref = new Firebase("https://localshare.firebaseio.com");
     @Override
@@ -32,7 +35,7 @@ public class ItemDetails extends AppCompatActivity {
         setContentView(R.layout.activity_item_details);
         Firebase.setAndroidContext(this);
 
-        String itemUid = getIntent().getExtras().getString("itemUid");
+        itemUid = getIntent().getExtras().getString("itemUid");
 
         rentalTerms = (Button)findViewById(R.id.btn_rental_terms);
         viewAvailability = (Button)findViewById(R.id.btn_view_availability);
@@ -92,10 +95,29 @@ public class ItemDetails extends AppCompatActivity {
             }
         });
 
-//        rentalTerms.setOnClickListener(this);
-//        viewAvailability.setOnClickListener(this);
-//        rent.setOnClickListener(this);
+        rentalTerms.setOnClickListener(this);
+        viewAvailability.setOnClickListener(this);
+        rent.setOnClickListener(this);
     }
 
 
+    @Override
+    public void onClick(View view) {
+
+        if(view.getId() == rentalTerms.getId())
+        {
+            Intent i = new Intent(this, RentalTerms.class);
+            i.putExtra("itemUid", itemUid);
+            startActivity(i);
+        }
+        else if (view.getId() == viewAvailability.getId())
+        {
+
+        }
+        else if (view.getId() == rent.getId())
+        {
+
+        }
+
+    }
 }
