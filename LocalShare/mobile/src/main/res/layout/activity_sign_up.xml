@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="match_parent" android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
     <LinearLayout
@@ -12,16 +11,13 @@
         android:paddingLeft="24dp"
         android:paddingRight="24dp">
 
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Login"
-            android:textSize="24dip"
-            android:id="@+id/textView20"
-            android:layout_gravity="center_horizontal"
             android:layout_marginBottom="24dp"
-            />
+            android:layout_gravity="center_horizontal"
+            android:textSize="24dip"
+            android:text="Sign Up"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -35,22 +31,30 @@
             android:inputType="textPassword"
             android:hint="Password"/>
 
+        <EditText android:id="@+id/password2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="Confirm Password"/>
+
+        <!-- Signup Button -->
         <Button
-            android:id="@+id/login"
+            android:id="@+id/btn_signup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
             android:padding="12dp"
-            android:text="Login"/>
+            android:text="Create Account"/>
 
-        <TextView android:id="@+id/link_signup"
+        <TextView android:id="@+id/link_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:text="Don't have an account? Sign up"
+            android:text="Already a member? Login"
             android:gravity="center"
             android:textSize="16dip"/>
+
     </LinearLayout>
 
 </ScrollView>

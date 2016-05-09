@@ -7,7 +7,7 @@ import java.io.Serializable;
  */
 public class Item implements Serializable
 {
-    int i;
+
     String d;
     String L;
     String p;
@@ -18,7 +18,6 @@ public class Item implements Serializable
     String s;
     public Item(int image, String Description, String l, String price, String name, String delivery, String Damage, String latefee, String Status)
     {
-        i = image;
         d = Description;
         L = l;
         p = price;
@@ -28,10 +27,7 @@ public class Item implements Serializable
         ll = latefee;
         s = Status; //status is for approved, denied, pending requests
     }
-    public int getImage()
-    {
-        return i;
-    }
+
     public String getDescription()
     {
         return d;

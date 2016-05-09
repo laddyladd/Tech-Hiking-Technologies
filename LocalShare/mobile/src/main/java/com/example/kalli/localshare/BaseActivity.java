@@ -11,6 +11,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.firebase.client.Firebase;
+
 public class BaseActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -18,6 +20,7 @@ public class BaseActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
+        Firebase.setAndroidContext(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -69,6 +72,7 @@ public class BaseActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        final Firebase ref = new Firebase("https://localshare.firebaseio.com");
 
         if (id == R.id.nav_available_items) {
             Intent j = new Intent(this, AvailableItems.class);
@@ -76,9 +80,11 @@ public class BaseActivity extends AppCompatActivity
         } else if (id == R.id.nav_pending_requests) {
         } else if (id == R.id.nav_my_items) {
         } else if (id == R.id.nav_my_account) {
+            Intent j = new Intent(this, MyAccount.class);
+            startActivity(j);
 
         } else if (id == R.id.nav_sign_out) {
-//            ref.unauth();
+            ref.unauth();
             Intent j = new Intent(this, MainActivity.class);
             startActivity(j);
             finish();
