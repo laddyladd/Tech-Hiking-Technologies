@@ -65,9 +65,9 @@ public class ItemDetails extends AppCompatActivity {
                 else
                     itemName.setText("");
                 if(poster != null)
-                    postedBy.setText(poster);
+                    postedBy.setText("Posted by: " + poster);
                 else
-                    postedBy.setText("");
+                    postedBy.setText("Posted by: ");
                 if(description != null)
                     itemDescription.setText("Description: " + description);
                 else
