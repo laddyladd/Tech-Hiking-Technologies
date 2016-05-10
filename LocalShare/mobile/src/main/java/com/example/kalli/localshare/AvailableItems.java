@@ -35,6 +35,7 @@ public class AvailableItems extends BaseActivity implements View.OnClickListener
     ArrayList<String> itemsAsStrings;
     ArrayAdapter<String> arrayAdapter;
     ArrayList<String> searcher;
+    ArrayAdapter<String> adapter;
     CommHandler commHandler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,12 +135,12 @@ public class AvailableItems extends BaseActivity implements View.OnClickListener
         for (int i = 0; i < searcher.size(); i++) {
             if (check.equals("")) {//if blank reset all data
                 itemsAsStrings.add(searcher.get(i));
-            } else if (check.equals(searcher.get(i).toLowerCase())) {
+            } else if (searcher.get(i).toLowerCase().contains(check) || check.equals(searcher.get(i).toLowerCase())) {
                 itemsAsStrings.add(searcher.get(i));
 
             }
         }
-        arrayAdapter.notifyDataSetChanged();
+        adapter.notifyDataSetChanged();
 
     }
     @Override
